@@ -1,6 +1,5 @@
 from turtle import Turtle
-from VALID import OKI, ns, opt
-import random
+from VALID import OKI, ns
 import subprocess
 
 def ver(lii):
@@ -42,15 +41,29 @@ while True:
     print("Escoja opción.")
     print("A)Crear dibujo personalizado")
     print("B)Reproducir dibujo guardado")
-    op=opt(input("Introduzca su opción: "),["A","B"])
-    
+    op=input("Introduzca aquí su opción: ")
+    while op!=("A") and op!=("B"):
+        op=input("Ecriba solo \'A\' o \'B\' según su opción: ")
     punt=ns(input("¿Mostrar flecha?: "))
+    epec=ns(input("¿Especificar grosor de linea?: "))
+    
     if op==("A"):
+        if epec=="s":
+            grosor=OKI(input("Introduzca grosor de la línea: "))
+            while grosor<0:
+                grosor=OKI(input("El grosor de la línea no puede ser menor que 0: "))
+            t.pensize(grosor)
         atrib=ver(datt(input("Introduce nºciclos, grados de giro y color de fondo, separados por coma: ")))
         while atrib==False:
             atrib=ver(datt(input("Datos incorrectos: ")))
         colors=datt(input("Introduce colores separados por coma: "))
+        
     elif op==("B"):
+        if epec=="s":
+            grosor=OKI(input("Introduzca grosor de la línea: "))
+            while grosor<0:
+                grosor=OKI(input("El grosor de la línea no puede ser menor que 0: "))
+            t.pensize(grosor)
         import pickle
         fig=input("Introduzca el nombre de la figura guardada que desea ver: ")
         while True:
