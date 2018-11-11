@@ -1,5 +1,6 @@
 from turtle import Turtle
 from VALID import OKI, ns
+import os
 import subprocess
 
 def ver(lii):
@@ -15,7 +16,7 @@ def col(lista):
     n=0
     res=[]
     for i in lista:
-        if n>=3:
+        if n>=3: #mejor "if n>3:"
             res.append(i)
         n+=1
     return res
@@ -92,6 +93,14 @@ while True:
                 import pickle
                 dibujo=atrib+colors
                 nom=input("¿Que nombre desea dar  al dibujo?: ")
+                if nom in os.listdir('-Path-'): #RUTA EN LA QUE SE ENCUENTRAN LOS ARCHIVOS GUARDADOS.
+                    seguir=ns(input("Yá existe un archivo con ese nombre ¿Desea sobreescribirlo?: "))
+                    if seguir=="s":
+                        pass
+                    else:
+                        subprocess.call(["cmd.exe","/C","cls"])
+                        t.reset()
+                        continue
                 pickle.dump(dibujo,open(nom,"wb"))
                 print("¡HECHO!",chr(7))
     except:
