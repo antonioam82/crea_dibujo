@@ -38,6 +38,7 @@ def datt(li):
 
 while True:
     t=Turtle()
+    t.hideturtle()
     t.speed(0)
     print("Escoja opción.")
     print("A)Crear dibujo personalizado")
@@ -76,8 +77,8 @@ while True:
                 fig=input("El archivo solicitado no se encontró o no es apto para este programa: ")
 
     try:
-        if punt==("n"):
-            t.hideturtle()
+        if punt==("s"):
+            t.showturtle()
         t.screen.bgcolor(atrib[2])
         for x in range(atrib[0]):
             t.color(colors[x%(len(colors))])
@@ -93,7 +94,7 @@ while True:
                 import pickle
                 dibujo=atrib+colors
                 nom=input("¿Que nombre desea dar  al dibujo?: ")
-                if nom in os.listdir('-Path-'): #RUTA EN LA QUE SE ENCUENTRAN LOS ARCHIVOS GUARDADOS.
+                if nom in os.listdir('/Users/Antonio/AppData/Local/Programs/Python/Python36-32/'):
                     seguir=ns(input("Yá existe un archivo con ese nombre ¿Desea sobreescribirlo?: "))
                     if seguir=="s":
                         pass
