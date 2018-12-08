@@ -94,7 +94,7 @@ while True:
                 import pickle
                 dibujo=atrib+colors
                 nom=input("¿Que nombre desea dar  al dibujo?: ")
-                if nom in os.listdir('/Users/Antonio/AppData/Local/Programs/Python/Python36-32/'):
+                if nom in os.listdir():
                     seguir=ns(input("Yá existe un archivo con ese nombre ¿Desea sobreescribirlo?: "))
                     if seguir=="s":
                         pass
