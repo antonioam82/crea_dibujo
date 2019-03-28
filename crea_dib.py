@@ -3,6 +3,10 @@ from VALID import OKI, ns
 import os
 import subprocess
 
+if not os.path.exists("Dibujos"):
+	os.makedirs("Dibujos")
+	os.chdir("Dibujos")
+
 def ver(lii):
     try:
         lii[0]==int(lii[0])
