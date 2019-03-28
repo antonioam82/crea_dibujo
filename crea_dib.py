@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: latin-1 -*-
 from turtle import Turtle
 from VALID import OKI, ns
 import os
