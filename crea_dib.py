@@ -1,13 +1,14 @@
-#!/usr/bin/python
-# -*- coding: latin-1 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from turtle import Turtle
 from VALID import OKI, ns
 import os
 import subprocess
 
-if not os.path.exists("Dibujos"):
-	os.makedirs("Dibujos")
-	os.chdir("Dibujos")
+if not os.path.exists("Dibujoss"):
+	os.makedirs("Dibujoss")
+	
+os.chdir("Dibujoss")
 
 def ver(lii):
     try:
