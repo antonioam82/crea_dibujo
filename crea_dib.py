@@ -5,10 +5,10 @@ from VALID import OKI, ns
 import os
 import subprocess
 
-if not os.path.exists("Dibujoss"):
-	os.makedirs("Dibujoss")
+if not os.path.exists("Dibujos"):
+	os.makedirs("Dibujos")
 	
-os.chdir("Dibujoss")
+os.chdir("Dibujos")
 
 def ver(lii):
     try:
