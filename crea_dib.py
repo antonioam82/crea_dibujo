@@ -5,10 +5,19 @@ from VALID import OKI, ns
 import os
 import subprocess
 
-if not os.path.exists("Dibujos"):
-	os.makedirs("Dibujos")
+if not os.path.exists("Dibujoss"):
+	os.makedirs("Dibujoss")
 	
-os.chdir("Dibujos")
+os.chdir("Dibujoss")
+
+def compro():
+        while True:
+                fig=input("Introduzca el nombre de la figura guardada que desea ver: ")
+                if fig in os.listdir():
+                        break
+                else:
+                        print("No se encontró")
+        return fig
 
 def ver(lii):
     try:
@@ -74,7 +83,7 @@ while True:
                 grosor=OKI(input("El grosor de la línea no puede ser menor que 0: "))
             t.pensize(grosor)
         import pickle
-        fig=input("Introduzca el nombre de la figura guardada que desea ver: ")
+        fig=compro()
         while True:
             try:
                 atrib=pickle.load(open(fig,"rb"))
