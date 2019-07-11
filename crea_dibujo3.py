@@ -4,11 +4,12 @@ from tkinter import *
 
 ventana=Tk()
 ventana.geometry("860x800")
-canvas = Canvas(master = ventana, width = 860, height = 760)
+ventana.configure(background="gray80")
+canvas = Canvas(master = ventana, width = 860, height = 735)
 canvas.pack()
 
 t = turtle.RawTurtle(canvas)
 
 
-Button(master = ventana,text="Crear", width=8).place(x=430,y=770)
+Button(master = ventana,text="Crear",bg="spring green",width=121).place(x=1,y=771)
 ventana.mainloop()
