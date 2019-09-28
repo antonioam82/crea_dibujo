@@ -1,5 +1,6 @@
 import turtle
 from tkinter import *
+from tkinter import colorchooser
 #from tkinter.filedialog import askopenfile
 
 ventana=Tk()
@@ -12,6 +13,12 @@ canvas.pack()
 
 t = turtle.RawTurtle(canvas)
 
+def color():
+    color_selec=colorchooser.askcolor()
+    if color_selec!=(None,None):
+        bgrcolor=list(color_selec)
+        t.screen.bgcolor(bgrcolor[1])
+
 
 etiLados=Label(master=ventana,text="Numero Lados",bg="gray80")
 etiLados.place(x=1,y=744)
@@ -23,7 +30,7 @@ entGrosor=Entry(master=ventana,textvariable=grosor)
 entGrosor.place(x=260,y=744)
 btnColor=Button(master=ventana,text="Color Pincel",bg="gray74")
 btnColor.place(x=415,y=740)
-btnFondo=Button(master=ventana,text="Color Fondo",bg="gray74")
+btnFondo=Button(master=ventana,text="Color Fondo",bg="gray74",command=color)
 btnFondo.place(x=520,y=740)
 btnClear=Button(master=ventana,text="Clear",bg="gray74")
 btnClear.place(x=625,y=740)
