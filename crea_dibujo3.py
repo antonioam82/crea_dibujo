@@ -8,16 +8,22 @@ ventana.geometry("860x800")
 ventana.configure(background="gray80")
 numLados=StringVar()
 grosor=StringVar()
+lista_colores=[]
 canvas = Canvas(master = ventana, width = 860, height = 735)
 canvas.pack()
 
 t = turtle.RawTurtle(canvas)
 
-def color():
+def color(m):
+    global lista_colores
     color_selec=colorchooser.askcolor()
     if color_selec!=(None,None):
         bgrcolor=list(color_selec)
-        t.screen.bgcolor(bgrcolor[1])
+        if m == "f":
+            t.screen.bgcolor(bgrcolor[1])
+        else:
+            lista_colores.append(bgrcolor[1])
+    
 
 
 etiLados=Label(master=ventana,text="Numero Lados",bg="gray80")
@@ -28,9 +34,9 @@ etiGrosor=Label(master=ventana,text="Grosor",bg="gray80")
 etiGrosor.place(x=220,y=744)
 entGrosor=Entry(master=ventana,textvariable=grosor)
 entGrosor.place(x=260,y=744)
-btnColor=Button(master=ventana,text="Color Pincel",bg="gray74")
+btnColor=Button(master=ventana,text="Color Pincel",bg="gray74",command=lambda:color("c"))
 btnColor.place(x=415,y=740)
-btnFondo=Button(master=ventana,text="Color Fondo",bg="gray74",command=color)
+btnFondo=Button(master=ventana,text="Color Fondo",bg="gray74",command=lambda:color("f"))
 btnFondo.place(x=520,y=740)
 btnClear=Button(master=ventana,text="Clear",bg="gray74")
 btnClear.place(x=625,y=740)
