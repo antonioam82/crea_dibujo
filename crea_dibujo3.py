@@ -6,6 +6,7 @@ from tkinter import colorchooser
 ventana=Tk()
 ventana.geometry("860x800")
 ventana.configure(background="gray80")
+st=True
 
 lista_colores=[]
 canvas = Canvas(master = ventana, width = 860, height = 735)
@@ -22,6 +23,14 @@ def color(m):
             t.screen.bgcolor(bgrcolor[1])
         else:
             lista_colores.append(bgrcolor[1])
+def hide():
+    global st
+    if st==True:
+        t.hideturtle()
+        st=False
+    else:
+        t.showturtle()
+        st=True
     
 
 
@@ -38,9 +47,12 @@ btnColor.place(x=415,y=740)
 btnFondo=Button(master=ventana,text="Color Fondo",bg="gray74",command=lambda:color("f"))
 btnFondo.place(x=520,y=740)
 btnClear=Button(master=ventana,text="Clear",bg="gray74")
-btnClear.place(x=625,y=740)
-btnGuardar=Button(master=ventana,text="Guardar",bg="gray74",width=21)
-btnGuardar.place(x=700,y=740)
+btnClear.place(x=739,y=740)
+btnGuardar=Button(master=ventana,text="Guardar",bg="gray74",width=10)
+btnGuardar.place(x=778,y=740)
+btnHide=Button(master=ventana,text="Hide/Show",bg="gray74",command=hide)
+btnHide.place(x=650,y=740)
 Button(master = ventana,text="Crear",bg="spring green",width=121).place(x=1,y=771)
 ventana.mainloop()
+
 
