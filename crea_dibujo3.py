@@ -25,6 +25,7 @@ def color(m):
             t.screen.bgcolor(bgrcolor[1])
         else:
             lista_colores.append(bgrcolor[1])
+            t.color(lista_colores[0])
 def hide():
     global st
     if st==True:
