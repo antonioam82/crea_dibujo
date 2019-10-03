@@ -4,8 +4,6 @@ import turtle
 from tkinter import *
 from tkinter import colorchooser
 #from tkinter.filedialog import askopenfile
-import threading
-
 
 ventana=Tk()
 ventana.geometry("860x800")
@@ -42,9 +40,6 @@ def clear():
     t.reset()
     lista_colores=[]
 
-def iniciar():
-    t=threading.Thread(target=crear)
-
 def crear():
     d=1
     for i in range(int(entLados.get())):
@@ -54,7 +49,6 @@ def crear():
         t.fd(d)
         d+=1
         
-    
 etiLados=Label(master=ventana,text="Numero Mov",bg="gray80")
 etiLados.place(x=1,y=744)
 etiGrados=Label(master=ventana,text="Grados",bg="gray80")
@@ -78,6 +72,7 @@ btnGuardar.place(x=778,y=740)
 btnHide=Button(master=ventana,text="Hide/Show",bg="gray74",command=hide)
 btnHide.place(x=650,y=740)
 Button(master = ventana,text="Crear",bg="spring green",width=121,command=crear).place(x=1,y=771)
+
 ventana.mainloop()
 
 
