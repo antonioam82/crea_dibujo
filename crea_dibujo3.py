@@ -4,6 +4,10 @@ import turtle
 from tkinter import *
 from tkinter import colorchooser
 #from tkinter.filedialog import askopenfile
+import turtle
+from tkinter import *
+from tkinter import colorchooser
+#from tkinter.filedialog import askopenfile
 
 ventana=Tk()
 ventana.geometry("860x800")
@@ -36,7 +40,9 @@ def hide():
         st=True
 
 def clear():
+    global lista_colores
     t.reset()
+    lista_colores=[]
 
 def crear():
     d=1
@@ -48,9 +54,6 @@ def crear():
         d+=1
         
     
-    
-
-
 etiLados=Label(master=ventana,text="Numero Mov",bg="gray80")
 etiLados.place(x=1,y=744)
 etiGrados=Label(master=ventana,text="Grados",bg="gray80")
