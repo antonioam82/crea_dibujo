@@ -4,10 +4,8 @@ import turtle
 from tkinter import *
 from tkinter import colorchooser
 #from tkinter.filedialog import askopenfile
-import turtle
-from tkinter import *
-from tkinter import colorchooser
-#from tkinter.filedialog import askopenfile
+import therading
+
 
 ventana=Tk()
 ventana.geometry("860x800")
@@ -43,6 +41,9 @@ def clear():
     global lista_colores
     t.reset()
     lista_colores=[]
+
+def iniciar():
+    t=threading.Thread(target=crear)
 
 def crear():
     d=1
