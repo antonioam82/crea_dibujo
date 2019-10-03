@@ -4,7 +4,7 @@ import turtle
 from tkinter import *
 from tkinter import colorchooser
 #from tkinter.filedialog import askopenfile
-import therading
+import threading
 
 
 ventana=Tk()
