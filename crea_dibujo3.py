@@ -4,11 +4,13 @@ import turtle
 from tkinter import *
 from tkinter import colorchooser
 #from tkinter.filedialog import askopenfile
+from tkinter import messagebox
 
 ventana=Tk()
 ventana.geometry("860x800")
 ventana.configure(background="gray80")
 st=True
+grosor=""
 
 lista_colores=[]
 canvas = Canvas(master = ventana, width = 860, height = 735)
@@ -41,14 +43,23 @@ def clear():
     lista_colores=[]
 
 def crear():
+    global grosor
     d=1
-    for i in range(int(entLados.get())):
-        if len(lista_colores)>1:
-            t.color(lista_colores[i%(len(lista_colores))])
-        t.left(int(entGrados.get()))
-        t.fd(d)
-        d+=1
+    grosor=entGrosor.get()
+    if grosor!="":
+        t.pensize(int(grosor))
+    try:
+        for i in range(int(entLados.get())):
+            if len(lista_colores)>1:
+                t.color(lista_colores[i%(len(lista_colores))])
+            t.left(int(entGrados.get()))
+            t.fd(d)
+            d+=1
+    except:
+        messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
         
+        
+    
 etiLados=Label(master=ventana,text="Numero Mov",bg="gray80")
 etiLados.place(x=1,y=744)
 etiGrados=Label(master=ventana,text="Grados",bg="gray80")
