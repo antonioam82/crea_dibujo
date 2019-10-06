@@ -33,6 +33,7 @@ def color(m):
         else:
             lista_colores.append(bgrcolor[1])
             t.color(lista_colores[0])
+            
 def hide():
     global st
     if st==True:
