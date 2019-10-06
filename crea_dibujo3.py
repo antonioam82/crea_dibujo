@@ -45,6 +45,7 @@ def clear():
 def crear():
     global grosor
     d=1
+    t.speed(0)
     grosor=entGrosor.get()
     if grosor!="":
         t.pensize(int(grosor))
@@ -85,6 +86,7 @@ btnHide.place(x=650,y=740)
 Button(master = ventana,text="Crear",bg="spring green",width=121,command=crear).place(x=1,y=771)
 
 ventana.mainloop()
+
 
 
 
