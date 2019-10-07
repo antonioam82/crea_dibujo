@@ -93,7 +93,7 @@ def crear(mode):
         movs=entLados.get()
         grados=entGrados.get()
     if entGrosor.get()!="":
-        t.pensize(int(grosor))
+        t.pensize(int(entGrosor.get()))
     try:
         t.speed(0)
         for i in range(int(movs)):
