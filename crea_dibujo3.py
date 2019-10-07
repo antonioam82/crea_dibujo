@@ -3,8 +3,9 @@
 import turtle
 from tkinter import *
 from tkinter import colorchooser
-#from tkinter.filedialog import askopenfile
 from tkinter import messagebox
+from tkinter import filedialog
+import os
 import pickle
 
 ventana=Tk()
@@ -43,7 +44,18 @@ def hide():
         t.showturtle()
         st=True
 
+def abrir():
+    global lista_colores
+    global color_fondo
+    open_archive=filedialog.askopenfilename(initialdir = "/",
+                 title = "Seleccione archivo",filetypes = (("all files","*.*"),
+                 ("all files","*.*")))
+    
+
 def guardar():
+    directorio = filedialog.askdirectory()
+    if directorio!="":
+        os.chdir(directorio)
     archivo = [entLados.get(),entGrados.get(),lista_colores,color_fondo]
     pickle.dump(archivo,open("nuevo_archivo","wb"))
     #print(archivo)
@@ -70,6 +82,8 @@ def crear():
     except:
         messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
         
+        
+    
 etiLados=Label(master=ventana,text="Numero Mov",bg="gray80")
 etiLados.place(x=1,y=744)
 etiGrados=Label(master=ventana,text="Grados",bg="gray80")
@@ -90,7 +104,7 @@ btnClear=Button(master=ventana,text="Clear",bg="gray74",command=clear)
 btnClear.place(x=660,y=740)
 btnGuardar=Button(master=ventana,text="Guardar",bg="gray74",width=10,command=guardar)
 btnGuardar.place(x=778,y=740)
-btnAbrir=Button(master=ventana,text="Abrir",bg="gray74",width=8)
+btnAbrir=Button(master=ventana,text="Abrir",bg="gray74",width=8,command=abrir)
 btnAbrir.place(x=710,y=740)
 btnHide=Button(master=ventana,text="Hide/Show",bg="gray74",command=hide)
 btnHide.place(x=580,y=740)
