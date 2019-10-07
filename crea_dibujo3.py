@@ -14,7 +14,10 @@ ventana.title("Crea Dibujo")
 ventana.configure(background="gray80")
 st=True
 grosor=""
+movs=""
+grados=""
 color_fondo=""
+m="ent"
 
 lista_colores=[]
 canvas = Canvas(master = ventana, width = 860, height = 735)
@@ -47,9 +50,19 @@ def hide():
 def abrir():
     global lista_colores
     global color_fondo
+    global movs
+    global grados
     open_archive=filedialog.askopenfilename(initialdir = "/",
                  title = "Seleccione archivo",filetypes = (("all files","*.*"),
                  ("all files","*.*")))
+    nombre=pickle.load(open(open_archive,"rb"))
+    lista_colores = nombre[2]
+    color_fondo = nombre[3]
+    movs=nombre[0]
+    grados=nombre[1]
+    print(movs,grados)
+    crear("out")
+    
     
 
 def guardar():
@@ -65,25 +78,36 @@ def clear():
     t.reset()
     lista_colores=[]
 
-def crear():
+def crear(mode):
     global grosor
+    global movs
+    global grados
+    global m
     d=1
-    grosor=entGrosor.get()
-    if grosor!="":
+    print(grosor)
+    print(grados)
+    print(lista_colores)
+    print(movs)
+    
+    if mode == "ent":
+        movs=entLados.get()
+        grados=entGrados.get()
+    if entGrosor.get()!="":
         t.pensize(int(grosor))
     try:
         t.speed(0)
-        for i in range(int(entLados.get())):
+        for i in range(int(movs)):
             if len(lista_colores)>1:
                 t.color(lista_colores[i%(len(lista_colores))])
-            t.left(int(entGrados.get()))
+            else:
+                t.color(lista_colores[0])
+            t.left(int(grados))
             t.fd(d)
             d+=1
     except:
         messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+    m="ent"
         
-        
-    
 etiLados=Label(master=ventana,text="Numero Mov",bg="gray80")
 etiLados.place(x=1,y=744)
 etiGrados=Label(master=ventana,text="Grados",bg="gray80")
@@ -108,7 +132,7 @@ btnAbrir=Button(master=ventana,text="Abrir",bg="gray74",width=8,command=abrir)
 btnAbrir.place(x=710,y=740)
 btnHide=Button(master=ventana,text="Hide/Show",bg="gray74",command=hide)
 btnHide.place(x=580,y=740)
-Button(master = ventana,text="Crear",bg="spring green",width=121,command=crear).place(x=1,y=771)
+Button(master = ventana,text="Crear",bg="spring green",width=121,command=lambda:crear("ent")).place(x=1,y=771)
 
 ventana.mainloop()
 
