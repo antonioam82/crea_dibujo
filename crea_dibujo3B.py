@@ -75,11 +75,13 @@ def abrir():
 
 
 def guardar():
-    directorio = filedialog.askdirectory()
-    if directorio!="":
-        os.chdir(directorio)
     archivo = [entLados.get(),entGrados.get(),lista_colores,color_fondo]
-    pickle.dump(archivo,open("nuevo_archivo","wb"))
+    guardar = filedialog.asksaveasfilename(initialdir = "/",
+              title = "Guardar", defaultextension = ".txt",
+              filetypes = (("txt files","*.txt"),
+                           ("all files","*.*")))
+                          
+    pickle.dump(archivo,open(guardar,"wb"))
     #print(archivo)
 
 def clear():
@@ -131,3 +133,4 @@ btnHide.place(x=580,y=740)
 Button(master = ventana,text="Crear",bg="spring green",width=121,command=crear).place(x=1,y=771)
 
 ventana.mainloop()
+
