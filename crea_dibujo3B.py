@@ -54,26 +54,28 @@ def abrir():
     open_archive=filedialog.askopenfilename(initialdir = "/",
                  title = "Seleccione archivo",filetypes = (("all files","*.*"),
                  ("all files","*.*")))
-    nombre=pickle.load(open(open_archive,"rb"))
-    lista_colores = nombre[2]
-    color_fondo = nombre[3]
-    movs=int(nombre[0])
-    grados=int(nombre[1])
-    if entGrosor.get()!="":
-        t.pensize(int(entGrosor.get()))
-    d=1
-    try:
-        t.speed(0)
-        for i in range(movs):
-            if len(lista_colores)>1:
-                t.color(lista_colores[i%(len(lista_colores))])
-            else:
-                t.color(lista_colores[0])
-            t.left(grados)
-            t.fd(d)
-            d+=1
-    except:
-        messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+    if open_archive!="":
+        nombre=pickle.load(open(open_archive,"rb"))
+        lista_colores = nombre[2]
+        color_fondo = nombre[3]
+        movs=int(nombre[0])
+        grados=int(nombre[1])
+        t.screen.bgcolor(color_fondo)
+        if entGrosor.get()!="":
+            t.pensize(int(entGrosor.get()))
+        d=1
+        try:
+            t.speed(0)
+            for i in range(movs):
+                if len(lista_colores)>1:
+                    t.color(lista_colores[i%(len(lista_colores))])
+                else:
+                    t.color(lista_colores[0])
+                t.left(grados)
+                t.fd(d)
+                d+=1
+        except:
+            messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
 
 
 def guardar():
