@@ -56,8 +56,10 @@ def abrir():
                  ("all files","*.*")))
     if open_archive!="":
         nombre=pickle.load(open(open_archive,"rb"))
-        lista_colores = nombre[2]
+        lista_colores = default_color(nombre[2])
         color_fondo = nombre[3]
+        if nombre[3] == "":
+            color_fondo = "white"
         movs=int(nombre[0])
         grados=int(nombre[1])
         t.screen.bgcolor(color_fondo)
@@ -88,15 +90,22 @@ def guardar():
     pickle.dump(archivo,open(guardar,"wb"))
     #print(archivo)
 
+def default_color(lis):
+    if lis == []:
+        lis.append("black")
+    return lis
+
 def clear():
     global lista_colores
     t.reset()
     lista_colores=[]
 
 def crear():
+    global lista_colores
     d=1
     if entGrosor.get()!="":
         t.pensize(int(entGrosor.get()))
+    lista_colores = default_color(lista_colores)
     try:
         t.speed(0)
         for i in range(int(entLados.get())):
