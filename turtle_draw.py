@@ -51,6 +51,7 @@ def abrir():
     global color_fondo
     global movs
     global grados
+    clear()
     open_archive=filedialog.askopenfilename(initialdir = "/",
                  title = "Seleccione archivo",filetypes = (("all files","*.*"),
                  ("all files","*.*")))
@@ -161,3 +162,4 @@ btnHide.place(x=580,y=740)
 Button(master = ventana,text="Crear",bg="spring green",width=121,command=crear).place(x=1,y=771)
 
 ventana.mainloop()
+
