@@ -66,6 +66,7 @@ def abrir():
         if entGrosor.get()!="":
             t.pensize(int(entGrosor.get()))
         d=1
+        
         try:
             t.speed(0)
             for i in range(movs):
@@ -78,6 +79,16 @@ def abrir():
                 d+=1
         except:
             messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+
+def validate_data(n,d):
+    validate = True
+    try:
+        n = int(n)
+        d = int(d)
+    except:
+        print("ERROR")
+        validate = False
+    return validate
 
 
 def guardar():
@@ -107,6 +118,7 @@ def crear():
     if entGrosor.get()!="":
         t.pensize(int(entGrosor.get()))
     lista_colores = default_color(lista_colores)
+    val = validate_data(entLados.get(),entGrados.get())
     try:
         t.speed(0)
         for i in range(int(entLados.get())):
@@ -118,7 +130,9 @@ def crear():
             t.fd(d)
             d+=1
     except:
-        messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+        if val == False:
+            messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+        
         
 etiLados=Label(master=ventana,text="Numero Mov",bg="gray80")
 etiLados.place(x=1,y=744)
