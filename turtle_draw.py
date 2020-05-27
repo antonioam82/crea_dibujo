@@ -67,7 +67,7 @@ def abrir():
         if entGrosor.get()!="":
             t.pensize(int(entGrosor.get()))
         d=1
-        
+        val = validate_data(movs,grados)
         try:
             t.speed(0)
             for i in range(movs):
@@ -79,7 +79,8 @@ def abrir():
                 t.fd(d)
                 d+=1
         except:
-            messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+            if val == False:
+                messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
 
 def validate_data(n,d):
     validate = True
