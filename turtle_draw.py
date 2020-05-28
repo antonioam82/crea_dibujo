@@ -56,31 +56,34 @@ def abrir():
                  title = "Seleccione archivo",filetypes = (("all files","*.*"),
                  ("all files","*.*")))
     if open_archive!="":
-        nombre=pickle.load(open(open_archive,"rb"))
-        lista_colores = default_color(nombre[2])
-        color_fondo = nombre[3]
-        if nombre[3] == "":
-            color_fondo = "white"
-        movs=int(nombre[0])
-        grados=int(nombre[1])
-        t.screen.bgcolor(color_fondo)
-        if entGrosor.get()!="":
-            t.pensize(int(entGrosor.get()))
-        d=1
-        val = validate_data(movs,grados)
         try:
-            t.speed(0)
-            for i in range(movs):
-                if len(lista_colores)>1:
-                    t.color(lista_colores[i%(len(lista_colores))])
-                else:
-                    t.color(lista_colores[0])
-                t.left(grados)
-                t.fd(d)
-                d+=1
+            nombre=pickle.load(open(open_archive,"rb"))
+            lista_colores = default_color(nombre[2])
+            color_fondo = nombre[3]
+            if nombre[3] == "":
+                color_fondo = "white"
+            movs=int(nombre[0])
+            grados=int(nombre[1])
+            t.screen.bgcolor(color_fondo)
+            if entGrosor.get()!="":
+                t.pensize(int(entGrosor.get()))
+            d=1
+            val = validate_data(movs,grados)
+            try:
+                t.speed(0)
+                for i in range(movs):
+                    if len(lista_colores)>1:
+                        t.color(lista_colores[i%(len(lista_colores))])
+                    else:
+                        t.color(lista_colores[0])
+                    t.left(grados)
+                    t.fd(d)
+                    d+=1
+            except:
+                if val == False:
+                    messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
         except:
-            if val == False:
-                messagebox.showwarning("ERROR","Datos introducidos erroneos o insuficientes")
+            messagebox.showwarning("ERROR","No se pudo cargar el atchivo")
 
 def validate_data(n,d):
     validate = True
@@ -163,4 +166,5 @@ btnHide.place(x=580,y=740)
 Button(master = ventana,text="Crear",bg="spring green",width=121,command=crear).place(x=1,y=771)
 
 ventana.mainloop()
+
 
